@@ -14,6 +14,11 @@ public class FirstRestAssuredClass {
     when i send request to http://api.zippopotam.us/us/60614
     then the status must 200
      */
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("os.name"));
+        System.out.println(System.getProperty("user.name"));
+        System.out.println(System.getProperty("os.version"));
+    }
     @Test
     public void verifystatusCode(){
         // response--that is sent by server as result of our requet
@@ -24,6 +29,8 @@ public class FirstRestAssuredClass {
         //verify the status code
         //verifies that status code matches the provided option
         response.then().statusCode(200);// status code is contains assertion
+        assertTrue(response.asString().contains("Chicago"));
+
     }
     @Test
     public void verifyBody(){
@@ -58,11 +65,12 @@ public class FirstRestAssuredClass {
        assertEquals("application/json",contentType);
       // this line will print and also verify status code
        response.prettyPeek().then().statusCode(200);
-
-
-
    }
 
 
 
-}
+    }
+
+
+
+
