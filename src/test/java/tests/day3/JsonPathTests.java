@@ -52,15 +52,38 @@ public class JsonPathTests {
                 when().get("/employees/");//when user makes get request
         response.then().statusCode(200);
         JsonPath jsonPath=response.jsonPath();
+
         String firstLN= jsonPath.getString("items.last_name[0]");
         assertThat(firstLN,is("King"));
+
         String firstSalary= jsonPath.getString("items.salary[0]");
         assertThat(firstSalary,is("24000"));
         // -1 means last one, so items.last_name[-1] gets the last lastname
         String lastFn= jsonPath.getString("items.last_name[-1]");
         assertThat(lastFn,is("Mourgos"));
+
         String firstSalary1= jsonPath.getString("items.salary[-1]");
         assertThat(firstSalary1,is("5800"));
-    }
 
+        System.out.println("---------------------");
+    }
+    /*
+    Given accept type is JSON
+    When users sends a GET request to "/employees"
+    Then status code s 200
+    And Content type is application/json
+    And verify first_name of the employee with employee_id 100 is Lex
+     */
+
+    @Test
+    public void getValuebasedonAnotherValue(){
+        Response response=given().contentType(ContentType.JSON).
+                when().get("/employees/");//when user makes get request
+        response.then().statusCode(200).and().contentType("application/json");
+
+        JsonPath jsonPath=response.jsonPath();
+        String string= jsonPath.getString("items.find{it.employee_id==102}.first_name");
+        System.out.println(string);
+        assertThat(string,is("Lex"));
+    }
 }
