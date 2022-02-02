@@ -24,6 +24,7 @@ public class TestUsingPojos {
         //response.prettyPrint();
         // convert the body into given type
         Job itJob=response.as(Job.class);
+
         System.out.println(itJob);
         System.out.println("==================");
         System.out.println("getJob_title= "+itJob.getJob_title());
