@@ -26,7 +26,7 @@ public class TestUsingPojos {
         System.out.println(itJob);
         System.out.println("==================");
         System.out.println("getJob_title= "+itJob.getJob_title());
-        System.out.println("getJob_id= "+itJob.getJob_id());
+        System.out.println("gitgetJob_id= "+itJob.getJob_id());
         //verify that job title is programmer
         assertThat(itJob.getJob_title(),equalTo("Programmer"));
     }
