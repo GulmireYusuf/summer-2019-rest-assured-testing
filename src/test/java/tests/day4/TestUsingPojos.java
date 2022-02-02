@@ -5,8 +5,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pojos.Job;
 
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
+import java.util.List;
+
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -29,6 +30,24 @@ public class TestUsingPojos {
         System.out.println("gitgetJob_id= "+itJob.getJob_id());
         //verify that job title is programmer
         assertThat(itJob.getJob_title(),equalTo("Programmer"));
+    }
+    @Test
+    public void test(){
+        Job job=new Job("01","accounting",100,100000);
+        System.out.println(job);
+    }
+    @Test
+    public void getManyJobs(){
+        Response response=when().get("/jobs");
+        response.then().statusCode(200);
+        //response.prettyPrint();
+        //write the jsonpath that matches all the jobs in the response
+        //job.class-->which pojo class do you want to convert to
+        //convert all the job objects into the new list
+        // list contains job type
+        List<Job> jobs = response.jsonPath().getList("items",Job.class);
+        System.out.println(jobs.get(0));
+        System.out.println(jobs.get(1));
     }
 
 }
