@@ -29,6 +29,7 @@ public class CreateSpartanss {
                 body(jsonFile).when().post("/api/spartans").
                 prettyPeek().then().statusCode(201).
                 body("success",equalTo("A Spartan is Born!"));
+        System.out.println();
 
     }
 }
