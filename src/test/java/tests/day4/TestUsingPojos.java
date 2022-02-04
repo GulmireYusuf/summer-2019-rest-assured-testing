@@ -3,8 +3,10 @@ package tests.day4;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pojos.Employee;
 import pojos.Job;
 
+import java.util.EmptyStackException;
 import java.util.List;
 
 import static io.restassured.RestAssured.*;
@@ -49,6 +51,16 @@ public class TestUsingPojos {
         List<Job> jobs = response.jsonPath().getList("items",Job.class);
         System.out.println(jobs.get(0));
         System.out.println(jobs.get(1));
+    }
+    // get the number of employees
+    @Test
+    public void allTheEmployeeCount(){
+        Response response=given().when().get("/employees");
+        response.then().assertThat().statusCode(200);
+
+        List<Employee> emps = response.jsonPath().getList("items", Employee.class);
+        System.out.println(emps.size());
+
     }
 
 }

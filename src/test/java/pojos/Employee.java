@@ -1,8 +1,16 @@
 package pojos;
 
-public class employee {
+public class Employee {
 
+    /*1. write the istance variable from postman
+      2. generate geter and setter
+      3. generate constructor
+      4. generate toString method
+    */
     private String employee_id;
+    private String last_name;
+    private String email;
+    private String phone_number;
 
     @Override
     public String toString() {
@@ -15,7 +23,7 @@ public class employee {
                 '}';
     }
 
-    public employee(String employee_id, String first_name, String last_name, String email, String phone_number) {
+    public Employee(String employee_id, String first_name, String last_name, String email, String phone_number) {
         this.employee_id = employee_id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -65,8 +73,6 @@ public class employee {
         this.phone_number = phone_number;
     }
 
-    private String last_name;
-    private String email;
-    private String phone_number;
+
 }
 
