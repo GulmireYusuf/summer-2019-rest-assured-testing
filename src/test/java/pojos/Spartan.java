@@ -1,7 +1,7 @@
 package pojos;
 
 public class Spartan {
-
+      // this has to be match with documentation ---> gender, name, phone all should to be lower case
        private String gender;
        private String name;
        private int phone;

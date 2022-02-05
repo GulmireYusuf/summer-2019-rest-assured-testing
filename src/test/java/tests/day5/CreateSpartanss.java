@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pojos.Spartan;
 
 import java.io.File;
 import java.util.HashMap;
@@ -66,7 +67,30 @@ public class CreateSpartanss {
                 body("name",is(name)).//is=equalTo in here we can also use equalTo method
                 body("gender",is(gender)).
                 body("phone",is(phone));
+    }
+    /**
+     * create a new spartan
+     * verify status code 201
+     */
+    @Test
+    public void postNewSpartannnn(){
+        Spartan spartan=new Spartan("Male","Optimus Prime",2022022022);
+
+        given().log().everything().contentType(ContentType.JSON).
+                body(spartan).when().post("/api/spartans").prettyPeek().then().statusCode(201);
+    }
+    @Test
+    public void postNewSpartannnn1(){
+        Response response = given().accept(ContentType.JSON).pathParam("id", 112).
+                when().get("/api/spartans/{id}");
+        response.then().statusCode(200);
+        response.prettyPrint();
+        //here is happen deserialization
+        Spartan spartan=response.as(Spartan.class);// get the json body and convert into Spartan object
+
+        System.out.println(spartan.toString());
 
 
     }
+
 }
