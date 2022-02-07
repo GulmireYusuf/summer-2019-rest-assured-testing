@@ -20,6 +20,7 @@ public class Address {
     }
 
     public Address(int addressId, String city, String state, String street, int zipCode) {
+        this.addressId = addressId;
         this.city = city;
         this.state = state;
         this.street = street;
