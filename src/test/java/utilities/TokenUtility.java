@@ -6,7 +6,8 @@ import static io.restassured.RestAssured.given;
 
 public class TokenUtility {
 
-    public enum UserType{TEACHER, TEAM_LEADER, TEAM_MEMBER};
+    //enum-->just list of varabiles with the type ; predefine type,that type has certain variables names.
+   public enum UserType{TEACHER, TEAM_LEADER, TEAM_MEMBER};
 
     public static String getToken(UserType type) {
         String token=null, email=null, password = null;
