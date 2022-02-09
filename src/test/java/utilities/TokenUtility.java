@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class TokenUtility {
-
+     //enum-->are useful when we want to use one for the given set variables. It reperents set of variable.
     //enum-->just list of varabiles with the type ; predefine type,that type has certain variables names.
    public enum UserType{TEACHER, TEAM_LEADER, TEAM_MEMBER};
 

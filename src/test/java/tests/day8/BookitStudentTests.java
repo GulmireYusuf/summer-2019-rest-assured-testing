@@ -19,8 +19,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static utilities.TokenUtility.UserType.TEAM_LEADER;
-import static utilities.TokenUtility.UserType.TEAM_MEMBER;
+import static utilities.TokenUtility.UserType.*;
 
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)// if @BeforeAll is static we can't use this one.
 public class BookitStudentTests {
@@ -97,10 +96,29 @@ public class BookitStudentTests {
                 header("Authorization", token).
                 params(newStudent).when().
                 post("/api/students/student").
-                prettyPeek().then().statusCode(403).
+                prettyPeek().then().statusCode(403).//403-->forbidden
                 body(containsString("only teacher allowed to modify database."));
 
+    }
+    /**
+     * Create new student using the post method to /api/students/student
+     * by using the token of a teacher
+     * verify status code 201
+     * verify error message only teacher allowed to modify database
+     */
+    @Test
+    public void testTeacher(){
+        Map<String, Object> newStudent = getNewStudent();
+        String token = TokenUtility.getToken(TEACHER);
+
+        given().
+                log().all().header("Authorization", token).
+                params(newStudent).when().
+                post("api/students/student").prettyPeek().
+                then().statusCode(201).
+                body(endsWith("has been added to database."));
 
     }
+
 
 }
