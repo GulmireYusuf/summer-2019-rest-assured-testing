@@ -17,7 +17,7 @@ public class SSLExamples {
     public void  useKeyStore(){
         // in the given keyStore() in here we pass the location of the trust store file
         given().
-                keyStore("/path/to/file","password").
+                keyStore("/path/to/file","password").//this ketStore and password coming from developer or someone
                 when().get("").then().statusCode(200);
     }
 }
