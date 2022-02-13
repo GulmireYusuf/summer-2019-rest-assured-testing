@@ -22,8 +22,8 @@ public class TokenUtility {
                 password = ConfigurationReader.get("team_leader_password");
                 break;
             case TEAM_MEMBER:
-                email = ConfigurationReader.get("team_member_email");
-                password = ConfigurationReader.get("team_member_password");
+                email = ConfigurationReader.get("student_email");
+                password = ConfigurationReader.get("student_password");
                 break;
         }
         Response response = given().

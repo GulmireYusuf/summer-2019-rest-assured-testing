@@ -22,6 +22,7 @@ public class JsonPathTests {
 
     @BeforeAll
     public static void setUp() {
+
         baseURI = "http://ec2-18-208-250-149.compute-1.amazonaws.com:1000/ords/hr/";
     }
 

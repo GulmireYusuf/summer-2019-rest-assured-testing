@@ -2,7 +2,6 @@ package tests.day7;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utilities.ConfigurationReader;
@@ -35,8 +34,8 @@ public class BookITtest {
     @Test
     public void testAccessToken(){
         // team_member_email
-        String email = ConfigurationReader.get("team_member_email");
-        String password = ConfigurationReader.get("team_member_password");
+        String email = ConfigurationReader.get("student_email");
+        String password = ConfigurationReader.get("student_password");
 
         Response response = given().log().everything().
                 queryParam("email", email).
